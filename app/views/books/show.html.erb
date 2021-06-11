@@ -6,12 +6,15 @@
         <table class="table">
           <tbody>
             <tr>
-              <td><%= attachment_image_tag @user, :profile_image, size: "40x40", fallback: "no_image.jpg" %></td>
+              <td>
+                <%= attachment_image_tag @book_show.user, :profile_image, size: "40x40", fallback: "no_image.jpg" %><br>
+                <%= link_to @book_show.user.name, user_path(@book_show.user_id) %>
+              </td>
               <td><%= @book_show.title %></td>
               <td><%= @book_show.body %></td>
-              <% if @book_show.id == current_user.id %>
-              <td><%= link_to "Edit", edit_book_path(@book_show), class:"btn btn-sm btn-success" %></td>
-              <td><%= link_to "Destroy", books_path, method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+              <% if @book_show.user.id == current_user.id %>
+                <td><%= link_to "Edit", edit_book_path(@book_show), class:"btn btn-sm btn-success" %></td>
+                <td><%= link_to "Destroy", book_path(@book_show), method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
               <% end %>
             </tr>
           </tbody>
