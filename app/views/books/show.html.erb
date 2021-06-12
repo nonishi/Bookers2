@@ -1,7 +1,6 @@
-
 <div class="container px-5 px-sm-0 py-3">
     <div class="row">
-      <%= render 'books/list', book: @book %>
+      <%= render 'books/list', book: @book, user: @book_show.user %>
       <div class="col-md-8 offset-md-1">
         <h2>Book detail</h2>
         <table class="table">

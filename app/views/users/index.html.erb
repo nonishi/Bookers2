@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0 py-3">
     <div class="row">
-      <%= render 'books/list', book: @book %>
+      <%= render 'books/list', book: @book, user: current_user %>
       <div class="col-md-8 offset-md-1">
         <h2>Users</h2>
         <table class="table">
@@ -19,7 +19,7 @@
               </td>
               <td><%= user.name %></td>
               <td>
-                <%=link_to "show", user_path(user) %>
+                <%=link_to "Show", user_path(user) %>
               </td>
             </tr>
             <% end %>
