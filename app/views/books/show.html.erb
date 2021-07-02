@@ -1,42 +1,42 @@
 <div class="container px-5 px-sm-0 py-3">
     <div class="row">
-      <%= render 'books/list', book: @book, user: @book_show.user %>
+      <%= render 'books/list', book: Book.new, user: @book.user %>
       <div class="col-md-8 offset-md-1">
         <h2>Book detail</h2>
         <table class="table">
           <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @book_show.user, :profile_image, size: "40x40", fallback: "no_image.jpg" %><br>
-                <%= link_to @book_show.user.name, user_path(@book_show.user_id) %>
+                <%= attachment_image_tag @book.user, :profile_image, size: "40x40", fallback: "no_image.jpg" %><br>
+                <%= link_to @book.user.name, user_path(@book.user_id) %>
               </td>
-              <td><%= @book_show.title %></td>
-              <td><%= @book_show.body %></td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
               <td>
-              <% if @book_show.favorited_by?(current_user) %>
+              <% if @book.favorited_by?(current_user) %>
                 <p>
-                  <%= link_to book_favorites_path(@book_show), method: :delete do %>
-                    ♥<%= @book_show.favorites.count %>
+                  <%= link_to book_favorites_path(@book), method: :delete do %>
+                    ♥<%= @book.favorites.count %>
                   <% end %>
                 </p>
               <% else %>
                 <p>
-                  <%= link_to book_favorites_path(@book_show), method: :post do %>
-                    ♡<%= @book_show.favorites.count %>
+                  <%= link_to book_favorites_path(@book), method: :post do %>
+                    ♡<%= @book.favorites.count %>
                   <% end %>
                 </p>
               <% end %>
             </td>
-            <td><p>コメント数：<%= @book_show.book_comments.count %></p></td>
-              <% if @book_show.user.id == current_user.id %>
-                <td><%= link_to "Edit", edit_book_path(@book_show), class:"btn btn-sm btn-success" %></td>
-                <td><%= link_to "Destroy", book_path(@book_show), method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+            <td><p>コメント数：<%= @book.book_comments.count %></p></td>
+              <% if @book.user.id == current_user.id %>
+                <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
+                <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
               <% end %>
             </tr>
           </tbody>
         </table>
         <table>
-          <% @book_show.book_comments.each do |book_comment| %>
+          <% @book.book_comments.each do |book_comment| %>
             <tr>
               <td>
                 <%= link_to user_path(book_comment.user) do %>
@@ -51,7 +51,7 @@
             </tr>
           <% end %>
         </table>
-        <%= form_with model:[@book_show,@book_comment], local: true do |f| %>
+        <%= form_with model:[@book,@book_comment], local: true do |f| %>
           <%= f.text_area :comment, size:"90x5" %><br>
           <%= f.submit '送信'%>
         <% end %>
