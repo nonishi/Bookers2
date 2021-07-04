@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
   def match(model, value)
     if model == "user"
       User.where(name: value)
-    elsif model == "book"
+    else
       Book.where(title: value)
     end
   end
@@ -20,7 +20,7 @@ class SearchesController < ApplicationController
   def forward(model, value)
     if model == "user"
       User.where("name LIKE ?", "#{value}%")
-    elsif model == "book"
+    else
       Book.where("title LIKE ?", "#{value}%")
     end
   end
@@ -28,7 +28,7 @@ class SearchesController < ApplicationController
   def backward(model, value)
     if model == "user"
       User.where("name LIKE ?", "%#{value}")
-    elsif model == "book"
+    else
       Book.where("title LIKE ?", "%#{value}")
     end
   end
@@ -36,7 +36,7 @@ class SearchesController < ApplicationController
   def partial(model, value)
     if model == "user"
       User.where("name LIKE ?", "%#{value}%")
-    elsif model == "book"
+    else
       Book.where("title LIKE ?", "%#{value}%")
     end
   end
