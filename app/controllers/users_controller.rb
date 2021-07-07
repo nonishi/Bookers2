@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     @book = Book.new
     @user = User.find(params[:id])
     @books = @user.books.page(params[:page])
+    @today_books = @books.where(created_at: Time.current.all_day)
+    @yesterday_books = @books.where(created_at: 1.day.ago.all_day)
+    @this_week_books = @books.where(created_at: 6.day.ago.at_beginning_of_day...Time.current.at_end_of_day)
+    @last_week_books = @books.where(created_at: 13.day.ago.at_beginning_of_day...1.week.ago.at_end_of_day)
   end
 
   def edit
