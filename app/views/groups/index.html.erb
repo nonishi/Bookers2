@@ -1,0 +1,28 @@
+<div class="container px-5 px-sm-0 py-3">
+  <div class="row">
+    <%= render 'books/list', book: @book, user: current_user %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Groups</h2>
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>紹介文</th>
+          <th></th>
+        </tr>
+        <% @groups.each do |group| %>
+        <tr>
+          <td><%= attachment_image_tag(group, :image, :fill, 50, 50, fallback: "no-image.jpg") %></td>
+          <td><%= link_to group.name, group_path(group) %></td>
+          <td><%= group.introduction %></td>
+          <td>
+            <% if group.owner_id == current_user.id %>
+              <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

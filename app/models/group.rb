@@ -1,4 +1,8 @@
 class Group < ApplicationRecord
-  belongs_to :group
-  belongs_to :user
+  has_many :group_users
+  has_many :users, through: :group_users
+
+  validates :name, presence: true
+  validates :introduction, presence: true
+  attachment :image, destroy: false
 end
