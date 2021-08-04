@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :groups, through: :group_users
   
+  has_many :user_rooms
+  has_many :chats
+  
   attachment :profile_image
 
   validates :name, uniqueness: true, length: { in: 2..20 }
