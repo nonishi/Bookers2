@@ -9,6 +9,14 @@ class BooksController < ApplicationController
       b.favorites.where(created_at: from...to).size <=>
       a.favorites.where(created_at: from...to).size
     }
+    if params[:sort].present?
+      case params[:sort]
+      when 'new'
+        @books = Book.all.order(created_at: 'DESC')
+      when 'high'
+        @books = Book.all.order(rate: 'DESC')
+      end
+    end
   end
 
   def create
