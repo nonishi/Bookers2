@@ -13,6 +13,8 @@ class BooksController < ApplicationController
       case params[:sort]
       when 'new'
         @books = Book.all.order(created_at: 'DESC')
+      when 'old'
+        @books = Book.all.order(created_at: 'ASC')
       when 'high'
         @books = Book.all.order(rate: 'DESC')
       end
