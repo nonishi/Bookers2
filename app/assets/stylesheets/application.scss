@@ -17,15 +17,21 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-h4{
+h4 {
   font-size: 16px;
   font-weight: normal;
 }
 
-.notice{
+.notice {
   color: green;
 }
 
-.error{
+.error {
   color: red;
+}
+
+.copy-right {
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
 }
