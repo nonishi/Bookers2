@@ -1,0 +1,45 @@
+.container.px-5.px-sm-0.py-3
+  .row
+    = render 'books/list', book: Book.new, user: @book.user
+    .col-md-8.offset-md-1
+      h2
+        | Book detail
+      table.table
+        tbody
+          |  <tr id="book_
+          = @book.id
+          | "> 
+          td
+            = attachment_image_tag @book.user, :profile_image, size: "40x40", fallback: "no_image.jpg"
+            br
+            = link_to @book.user.name, user_path(@book.user_id)
+          td
+            = @book.title
+          td
+            = @book.body
+          td.favorite-btn
+            = render 'favorites/favorite-btn', book: @book
+          td
+            p.comments-count
+              | コメント数：
+              = @book.book_comments.count
+          td
+            |  <div id="rate_
+            = @book.id
+            | ">
+    script
+      |  $('#rate_<ruby code="= @book.id"></ruby>').raty({ size: 20, starOff: '<ruby code="= asset_path('star-off.png')"></ruby>', starOn : '<ruby code="= asset_path('star-on.png')"></ruby>', starHalf: '<ruby code="= asset_path('star-half.png')"></ruby>', half: true, readOnly: true, score: <ruby code="= @book.rate"></ruby>, }); 
+    td
+      | 閲覧数: 
+      = @book.impressionist_count
+    - if @book.user.id == current_user.id
+      td
+        = link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success"
+      td
+        = link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？"
+    table#book_comments
+      = render 'book_comments/index', book: @book
+    = form_with model:[@book,@book_comment] do |f|
+      = f.text_area :comment, size:"90x5"
+      br
+      = f.submit '送信'
