@@ -1,22 +1,11 @@
-# README
+# Bookers2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+自分のお気に入りの本をみんなと共有出来るSNSです。
 
-Things you may want to cover:
-
-* Ruby version => 5.2.6
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
