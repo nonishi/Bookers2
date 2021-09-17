@@ -13,7 +13,6 @@
       <% if flash[:notice] %>
         <p class="notice"><%= flash[:notice] %></p>
       <% end %>
-      <%= render 'layouts/search' %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
