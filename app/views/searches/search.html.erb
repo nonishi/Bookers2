@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-xs-12">
     <% if @model == "user" %>
-    <h2>Users search for '<%= @value %>'</h2>
+    <h2 class="my-3">Users search for '<%= @value %>'</h2>
     <table class="table">
       <thead>
         <tr>
@@ -13,21 +13,21 @@
       <tbody>
         <% @datas.each do |user| %>
         <tr>
-          <th>
+          <td>
             <%= attachment_image_tag user, :profile_image, size:"40x40", fallback: "no_image.jpg" %>
-          </th>
-          <th>
+          </td>
+          <td>
             <%= link_to user_path(user) do %>
               <%= user.name %>
             <% end %>
-          </th>
-          <th><%= user.introduction %></th>
+          </td>
+          <td><%= user.introduction %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
     <% elsif @model == "book" %>
-    <h2>Books search for '<%= @value %>'</h2>
+    <h2 class="my-3">Books search for '<%= @value %>'</h2>
     <table class="table">
       <thead>
         <tr>
@@ -39,15 +39,15 @@
       <tbody>
       <% @datas.each do |book| %>
         <tr>
-          <th>
+          <td>
             <%= attachment_image_tag book.user, :profile_image, size: "40x40", fallback: "no_image.jpg" %>
-          </th>
-          <th>
+          </td>
+          <td>
             <%= link_to book_path(book) do %>
               <%= book.title %>
             <% end %>
-          </th>
-          <th><%= book.body %></th>
+          </td>
+          <td><%= book.body %></td>
         </tr>
       <% end %>
       </tbody>
