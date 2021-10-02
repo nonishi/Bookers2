@@ -69,5 +69,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'kaminari', '~> 1.2.1'
 gem 'rubocop-airbnb'
 gem 'impressionist', '~>1.6.1'
+
+#日本語化
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
